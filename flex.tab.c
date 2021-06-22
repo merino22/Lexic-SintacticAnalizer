@@ -73,8 +73,10 @@
 
 int yylex();
 int yyerror(char *s);
+int counter;
+void Informer(int type, int fNumber, int sNumber);
 
-#line 78 "flex.tab.c"
+#line 80 "flex.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -508,8 +510,8 @@ static const yytype_int8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    17,    17,    17,    22,    23,    24,    26,    27,    28,
-      29,    31,    32
+       0,    19,    19,    19,    26,    27,    28,    30,    31,    32,
+      33,    35,    36
 };
 #endif
 
@@ -1302,51 +1304,53 @@ yyreduce:
   switch (yyn)
     {
   case 3:
-#line 17 "flex.y"
+#line 19 "flex.y"
                       {
-printf("Resultado: %d\n", yyvsp[-1]);
+printf("\nResultado: %d\n", yyvsp[-1]); counter = 0;
+printf("--------------------------------------------"); 
+printf("\nIngrese sus operaciones matematicas:\n\n"); 
 }
-#line 1310 "flex.tab.c"
+#line 1314 "flex.tab.c"
     break;
 
   case 5:
-#line 23 "flex.y"
-                     {yyvsp[-2] = yyvsp[-2] + yyvsp[0];}
-#line 1316 "flex.tab.c"
+#line 27 "flex.y"
+                     {Informer(1,yyvsp[-2],yyvsp[0]); yyval = yyvsp[-2] + yyvsp[0];}
+#line 1320 "flex.tab.c"
     break;
 
   case 6:
-#line 24 "flex.y"
-                     {yyval = yyvsp[-2] - yyvsp[0];}
-#line 1322 "flex.tab.c"
+#line 28 "flex.y"
+                     {Informer(2,yyvsp[-2],yyvsp[0]); yyval = yyvsp[-2] - yyvsp[0];}
+#line 1326 "flex.tab.c"
     break;
 
   case 8:
-#line 27 "flex.y"
-                      {yyval = yyvsp[-2] / yyvsp[0];}
-#line 1328 "flex.tab.c"
+#line 31 "flex.y"
+                      {Informer(3,yyvsp[-2],yyvsp[0]); yyval = yyvsp[-2] / yyvsp[0];}
+#line 1332 "flex.tab.c"
     break;
 
   case 9:
-#line 28 "flex.y"
-                      {yyval = yyvsp[-2] * yyvsp[0];}
-#line 1334 "flex.tab.c"
+#line 32 "flex.y"
+                      {Informer(4,yyvsp[-2],yyvsp[0]); yyval = yyvsp[-2] * yyvsp[0];}
+#line 1338 "flex.tab.c"
     break;
 
   case 10:
-#line 29 "flex.y"
-                      {yyval = pow(yyvsp[-2],yyvsp[0]);}
-#line 1340 "flex.tab.c"
+#line 33 "flex.y"
+                      {Informer(5,yyvsp[-2],yyvsp[0]); yyval = pow(yyvsp[-2],yyvsp[0]);}
+#line 1344 "flex.tab.c"
     break;
 
   case 12:
-#line 32 "flex.y"
+#line 36 "flex.y"
                {yyval = yyvsp[0] >= 0? yyvsp[0] : - yyvsp[0]; }
-#line 1346 "flex.tab.c"
+#line 1350 "flex.tab.c"
     break;
 
 
-#line 1350 "flex.tab.c"
+#line 1354 "flex.tab.c"
 
       default: break;
     }
@@ -1578,11 +1582,44 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 34 "flex.y"
+#line 38 "flex.y"
 
+
+void Informer(int type, int fNumber, int sNumber){
+    counter++;
+
+    printf("Paso %d",counter); 
+    switch(type){
+        case 1:
+        
+        printf(": Sumar los numeros: "); 
+        ;
+        break;
+        case 2:
+        printf(": Restar los numeros: ");
+        ;
+        break;
+        case 3:
+        printf(": Dividir los numeros: ");
+        ;
+        break;
+        case 4:
+        printf(": Multiplicar los numeros: ");
+        ;
+        break;
+        case 5:
+        printf(": Elevar los numeros: ");
+        ;
+        break;
+    }
+    printf("%d y ", fNumber); 
+    printf("%d\n", sNumber);
+}
 
 main( int argc, char **argv )
 {
+    printf("****** Bienvenido a Simple Calculator *****\n\n Ingrese sus operaciones matematicas:\n \n ");
+
     yyparse();
   
 }
