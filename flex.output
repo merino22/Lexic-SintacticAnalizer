@@ -1,4 +1,4 @@
-Gramática
+Grammar
 
     0 $accept: stms $end
 
@@ -18,7 +18,7 @@ Gramática
    11     | ABS term
 
 
-Terminales con las reglas donde aparecen
+Terminals, with rules where they appear
 
     $end (0) 0
     error (256)
@@ -32,7 +32,7 @@ Terminales con las reglas donde aparecen
     EOL (265) 2
 
 
-No terminales con las reglas donde aparecen
+Nonterminals, with rules where they appear
 
     $accept (11)
         on left: 0
@@ -50,183 +50,183 @@ No terminales con las reglas donde aparecen
         on right: 6 7 8 9 11
 
 
-Estado 0
+State 0
 
-    0 $accept: . stms $end
+    0 $accept: • stms $end
 
-    $default  reduce usando la regla 1 (stms)
+    $default  reduce using rule 1 (stms)
 
-    stms  ir al estado 1
+    stms  go to state 1
 
 
-Estado 1
+State 1
 
-    0 $accept: stms . $end
-    2 stms: stms . stm EOL
+    0 $accept: stms • $end
+    2 stms: stms • stm EOL
 
-    $end  desplazar e ir al estado 2
-    NUM   desplazar e ir al estado 3
-    ABS   desplazar e ir al estado 4
+    $end  shift, and go to state 2
+    NUM   shift, and go to state 3
+    ABS   shift, and go to state 4
 
-    stm     ir al estado 5
-    factor  ir al estado 6
-    term    ir al estado 7
+    stm     go to state 5
+    factor  go to state 6
+    term    go to state 7
 
 
-Estado 2
+State 2
 
-    0 $accept: stms $end .
+    0 $accept: stms $end •
 
-    $default  aceptar
+    $default  accept
 
 
-Estado 3
+State 3
 
-   10 term: NUM .
+   10 term: NUM •
 
-    $default  reduce usando la regla 10 (term)
+    $default  reduce using rule 10 (term)
 
 
-Estado 4
+State 4
 
-   11 term: ABS . term
+   11 term: ABS • term
 
-    NUM  desplazar e ir al estado 3
-    ABS  desplazar e ir al estado 4
+    NUM  shift, and go to state 3
+    ABS  shift, and go to state 4
 
-    term  ir al estado 8
+    term  go to state 8
 
 
-Estado 5
+State 5
 
-    2 stms: stms stm . EOL
+    2 stms: stms stm • EOL
 
-    EOL  desplazar e ir al estado 9
+    EOL  shift, and go to state 9
 
 
-Estado 6
+State 6
 
-    3 stm: factor .
-    4    | factor . SUM stm
-    5    | factor . SUB stm
-    7 factor: factor . DIV term
-    8       | factor . MUL term
-    9       | factor . POW term
+    3 stm: factor •
+    4    | factor • SUM stm
+    5    | factor • SUB stm
+    7 factor: factor • DIV term
+    8       | factor • MUL term
+    9       | factor • POW term
 
-    SUM  desplazar e ir al estado 10
-    SUB  desplazar e ir al estado 11
-    MUL  desplazar e ir al estado 12
-    DIV  desplazar e ir al estado 13
-    POW  desplazar e ir al estado 14
+    SUM  shift, and go to state 10
+    SUB  shift, and go to state 11
+    MUL  shift, and go to state 12
+    DIV  shift, and go to state 13
+    POW  shift, and go to state 14
 
-    $default  reduce usando la regla 3 (stm)
+    $default  reduce using rule 3 (stm)
 
 
-Estado 7
+State 7
 
-    6 factor: term .
+    6 factor: term •
 
-    $default  reduce usando la regla 6 (factor)
+    $default  reduce using rule 6 (factor)
 
 
-Estado 8
+State 8
 
-   11 term: ABS term .
+   11 term: ABS term •
 
-    $default  reduce usando la regla 11 (term)
+    $default  reduce using rule 11 (term)
 
 
-Estado 9
+State 9
 
-    2 stms: stms stm EOL .
+    2 stms: stms stm EOL •
 
-    $default  reduce usando la regla 2 (stms)
+    $default  reduce using rule 2 (stms)
 
 
-Estado 10
+State 10
 
-    4 stm: factor SUM . stm
+    4 stm: factor SUM • stm
 
-    NUM  desplazar e ir al estado 3
-    ABS  desplazar e ir al estado 4
+    NUM  shift, and go to state 3
+    ABS  shift, and go to state 4
 
-    stm     ir al estado 15
-    factor  ir al estado 6
-    term    ir al estado 7
+    stm     go to state 15
+    factor  go to state 6
+    term    go to state 7
 
 
-Estado 11
+State 11
 
-    5 stm: factor SUB . stm
+    5 stm: factor SUB • stm
 
-    NUM  desplazar e ir al estado 3
-    ABS  desplazar e ir al estado 4
+    NUM  shift, and go to state 3
+    ABS  shift, and go to state 4
 
-    stm     ir al estado 16
-    factor  ir al estado 6
-    term    ir al estado 7
+    stm     go to state 16
+    factor  go to state 6
+    term    go to state 7
 
 
-Estado 12
+State 12
 
-    8 factor: factor MUL . term
+    8 factor: factor MUL • term
 
-    NUM  desplazar e ir al estado 3
-    ABS  desplazar e ir al estado 4
+    NUM  shift, and go to state 3
+    ABS  shift, and go to state 4
 
-    term  ir al estado 17
+    term  go to state 17
 
 
-Estado 13
+State 13
 
-    7 factor: factor DIV . term
+    7 factor: factor DIV • term
 
-    NUM  desplazar e ir al estado 3
-    ABS  desplazar e ir al estado 4
+    NUM  shift, and go to state 3
+    ABS  shift, and go to state 4
 
-    term  ir al estado 18
+    term  go to state 18
 
 
-Estado 14
+State 14
 
-    9 factor: factor POW . term
+    9 factor: factor POW • term
 
-    NUM  desplazar e ir al estado 3
-    ABS  desplazar e ir al estado 4
+    NUM  shift, and go to state 3
+    ABS  shift, and go to state 4
 
-    term  ir al estado 19
+    term  go to state 19
 
 
-Estado 15
+State 15
 
-    4 stm: factor SUM stm .
+    4 stm: factor SUM stm •
 
-    $default  reduce usando la regla 4 (stm)
+    $default  reduce using rule 4 (stm)
 
 
-Estado 16
+State 16
 
-    5 stm: factor SUB stm .
+    5 stm: factor SUB stm •
 
-    $default  reduce usando la regla 5 (stm)
+    $default  reduce using rule 5 (stm)
 
 
-Estado 17
+State 17
 
-    8 factor: factor MUL term .
+    8 factor: factor MUL term •
 
-    $default  reduce usando la regla 8 (factor)
+    $default  reduce using rule 8 (factor)
 
 
-Estado 18
+State 18
 
-    7 factor: factor DIV term .
+    7 factor: factor DIV term •
 
-    $default  reduce usando la regla 7 (factor)
+    $default  reduce using rule 7 (factor)
 
 
-Estado 19
+State 19
 
-    9 factor: factor POW term .
+    9 factor: factor POW term •
 
-    $default  reduce usando la regla 9 (factor)
+    $default  reduce using rule 9 (factor)

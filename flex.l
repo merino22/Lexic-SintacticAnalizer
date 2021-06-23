@@ -20,7 +20,6 @@ number ([0-9])+
  "^" {return POW;}
  "|" {return ABS;}
  \n {return EOL;}
- [ \t] { /* nada */ }
- . {printf("Esto es una calculadora %c\n", *yytext); }
+ . {/* nada */ }
 
 %%

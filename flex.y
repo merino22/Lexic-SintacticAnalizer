@@ -17,9 +17,9 @@ void Informer(int type, int fNumber, int sNumber);
 %%
 
 stms: | stms stm EOL  {
-printf("\nResultado: %d\n", $2); counter = 0;
+printf("\n Resultado: %d\n", $2); counter = 0;
 printf("--------------------------------------------"); 
-printf("\nIngrese sus operaciones matematicas:\n\n"); 
+printf("\n Operacion Matematica:\n\n"); 
 }
 ;
 
@@ -40,27 +40,27 @@ term: NUM
 void Informer(int type, int fNumber, int sNumber){
     counter++;
 
-    printf("Paso %d",counter); 
+    printf(" Paso %d",counter); 
     switch(type){
         case 1:
         
-        printf(": Sumar los numeros: "); 
+        printf(": Sumar: "); 
         ;
         break;
         case 2:
-        printf(": Restar los numeros: ");
+        printf(": Restar: ");
         ;
         break;
         case 3:
-        printf(": Dividir los numeros: ");
+        printf(": Dividir: ");
         ;
         break;
         case 4:
-        printf(": Multiplicar los numeros: ");
+        printf(": Multiplicar: ");
         ;
         break;
         case 5:
-        printf(": Elevar los numeros: ");
+        printf(": Elevar: ");
         ;
         break;
     }
@@ -68,15 +68,16 @@ void Informer(int type, int fNumber, int sNumber){
     printf("%d\n", sNumber);
 }
 
-main( int argc, char **argv )
+int main( int argc, char **argv )
 {
-    printf("****** Bienvenido a Simple Calculator *****\n\n Ingrese sus operaciones matematicas:\n \n ");
+    printf("\e[1;1H\e[2J");
+    printf("********** Analizador Lexico y Sintactico *********\n\n****** Proyecto #2 - Teoria de la Computacion *****\n\n Operacion Matematica:\n \n ");
 
     yyparse();
   
 }
 
-yyerror(char *s){
+int yyerror(char *s){
 
-	printf("Syntax Error on line %s\n", s);
+	printf("Error Sintactico %s\n", s);
 }
