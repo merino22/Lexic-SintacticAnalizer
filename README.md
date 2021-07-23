@@ -1,3 +1,3 @@
 # Lexic-SintacticAnalizer
 
-El análisis léxico-sintáctico tiene por objeto reconocer la forma de las sentencias de un lenguaje. Reconocer la forma de una sentencia implica reconocer sus lexemas y estructuras sintácticas.El resultado del análisis léxico-sintáctico puede ser un error de reconocimiento o una versión de la sentencia reconocida en forma de árbol de sintaxis abstracta (asa). 
+The lexical-syntactic analysis aims to recognize the form of the sentences of a language. Recognizing the form of a sentence implies recognizing its lexemes and syntactic structures. The result of the lexical-syntactic analysis can be a recognition error or a version of the sentence recognized in the form of an abstract syntax tree (handle).
